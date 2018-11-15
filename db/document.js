@@ -2,5 +2,8 @@ const fs = require('fs')
 __dirname = './db'
 
 module.exports = uri => {
-  return fs.readFileSync(__dirname + '/' + uri, 'utf8')
+  const data = fs.readFileSync(__dirname + '/' + uri, 'utf8')
+  let column = data.split('\r\n')
+  column.splice(0, 1)
+  return column.join('\r\n')
 }

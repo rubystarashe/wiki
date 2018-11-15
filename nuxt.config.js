@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const { routes } = require('./db')
 
 module.exports = {
   mode: 'universal',
@@ -28,5 +29,8 @@ module.exports = {
     extend(config, ctx) {
       
     }
+  },
+  generate: {
+    routes
   }
 }

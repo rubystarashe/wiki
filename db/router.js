@@ -1,11 +1,11 @@
 const fs = require('fs')
 
-const categories = fs.readdirSync('./').filter(function (file) {
-  return fs.statSync('./'+file).isDirectory()
+const categories = fs.readdirSync(__dirname).filter(function (file) {
+  return fs.statSync(__dirname + '/' + file).isDirectory()
 })
 
 const getFiles = name => {
-  const path = './' + name
+  const path = __dirname + '/' + name
   return fs.readdirSync(path).filter(function (file) {
     return fs.statSync(path+'/'+file).isFile()
   })

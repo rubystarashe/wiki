@@ -1,7 +1,7 @@
-# wiki
-
-> RubystarAshe&#39;s web dev wiki
-![Alt Text](https://github.com/rubystarashe/nuxt-vuex-localstorage/blob/master/localstorage.gif)  
+![Alt Text](https://github.com/rubystarashe/nuxt-vuex-localstorage/blob/master/localstorage.gif) 
+# Nuxt 문서 1
+`입문 단계`
+설명 1111111111111111111111111
 
 ## Build Setup
 

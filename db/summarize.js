@@ -36,16 +36,20 @@ module.exports = (_ => {
     column.forEach((_, i) => {
       if (!image) {
         const imageRegex = /http[s]?:\/\/.*\.(jp[e]?g|gif|png)/.exec(column[i])
-        image = imageRegex ? imageRegex[0] : null
+        if (imageRegex) {
+          image = imageRegex[0]
+          column.splice(i, 1)
+        }
       }
       column[i] = column[i].replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi, '')
       column[i] = column[i].replace(/^ /gi, '')
     })
     data[categori].push({
-      fileName,
+      uri: categori + '/' + fileName,
       document,
       title: column[0],
-      description: column[1],
+      subclass: column[1],
+      description: column[2],
       image
     })
   })

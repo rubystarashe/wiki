@@ -1,6 +1,7 @@
-# wiki
-
-> RubystarAshe&#39;s web dev wiki
+![Alt Text](https://github.com/rubystarashe/nuxt-vuex-localstorage/blob/master/localstorage.gif) 
+# Vue 문서 2
+`숙련 단계`
+설명 2222222222222222
 
 ## Build Setup
 

@@ -30,6 +30,7 @@ module.exports = categori => {
         column[i] = column[i].replace(/^ /gi, '')
       })
       data.push({
+        uri: '/' + categori + '/' + document,
         document,
         title: column[0],
         subclass: column[1],

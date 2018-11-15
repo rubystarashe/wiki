@@ -16,6 +16,7 @@ const getFiles = name => {
 module.exports = (_ => {
   let res = []
   getDirectory(__dirname).forEach(e => {
+    res.push('/' + e)
     const files = getFiles(e)
     files.forEach(f => {
       res.push('/' + e + '/' + f.split('.')[0])

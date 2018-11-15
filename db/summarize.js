@@ -1,4 +1,5 @@
 const fs = require('fs')
+__dirname = './db'
 
 const categories = fs.readdirSync(__dirname).filter(file => {
   return fs.statSync(__dirname + '/' + file).isDirectory()

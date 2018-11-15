@@ -27,13 +27,12 @@ module.exports = {
   },
   build: {
     extend(config, ctx) {
-      
+      config.node = {
+        fs: 'empty'
+      }
     }
   },
   generate: {
     routes
-  },
-  env: {
-    baseURL: 'http://localhost:3000'
   }
 }

@@ -12,19 +12,16 @@ export default {
   asyncData({ params }) {
     const db = require('~/db')
     return {
-      thumbnail: db.thumbnails(params.categori)
+      categori: params.categori,
+      thumbnail: db.thumbnail(params.categori),
+      document: params.document ? {
+        name: params.document,
+        data: db.document(params.categori + '/' + params.document + '.md')
+      } : null
     }
   },
   components: {
     documentSection
-  },
-  computed: {
-    categori () {
-      return this.$route.params.categori
-    },
-    document () {
-      return this.$route.params.document
-    }
   },
   methods: {
     

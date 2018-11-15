@@ -9,6 +9,12 @@
 import documentSection from '~/components/categori/document/section'
 
 export default {
+  asyncData({ params }) {
+    const db = require('~/db')
+    return {
+      thumbnail: db.thumbnails(params.categori)
+    }
+  },
   components: {
     documentSection
   },
@@ -18,9 +24,6 @@ export default {
     },
     document () {
       return this.$route.params.document
-    },
-    thumbnail () {
-      return this.$store.getters.thumbnail(this.categori)
     }
   },
   methods: {

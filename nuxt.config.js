@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const { routes } = require('./db')
+const { routes, thumbnail } = require('./db')
 
 module.exports = {
   mode: 'universal',
@@ -32,5 +32,8 @@ module.exports = {
   },
   generate: {
     routes
+  },
+  env: {
+    baseURL: 'http://localhost:3000'
   }
 }

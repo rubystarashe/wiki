@@ -1,3 +1,4 @@
 module.exports = {
-  routes: require('./router')
+  routes: require('./router'),
+  thumbnail: require('./summarize')
 }

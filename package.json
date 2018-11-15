@@ -9,14 +9,14 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "publish": "npm run generate && npm run deploy"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/markdownit": "^1.2.2",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.0.0",
-    "vue-markdown": "^2.2.4"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

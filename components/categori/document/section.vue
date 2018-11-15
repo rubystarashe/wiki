@@ -1,6 +1,6 @@
 <template>
 <div>
-  {{document}}
+   <div v-html="$md.render(document.data)"></div>
 </div>
 </template>
 

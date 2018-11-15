@@ -18,10 +18,18 @@ module.exports = {
   css: [
   ],
   plugins: [
+
   ],
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/markdownit'
   ],
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    injected: true
+  },
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },

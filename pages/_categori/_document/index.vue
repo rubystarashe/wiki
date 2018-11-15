@@ -1,7 +1,16 @@
 <template>
 <section>
-  {{categori}} {{thumbnail}}
-  <documentSection v-if="document" :document="document"/>
+  {{categori}}
+  <documentSection
+    v-for="{ document, title, image, subclass, description, data } in thumbnail"
+    :key="document"
+    :document="document"
+    :title="title"
+    :image="image"
+    :subclass="subclass"
+    :description="description"
+    :data="data"
+  />
 </section> 
 </template>
 
@@ -11,20 +20,15 @@ import documentSection from '~/components/categori/document/section'
 export default {
   asyncData({ params }) {
     const db = require('~/db')
+    let thumbnail = db.thumbnail(params.categori)
+    if (params.document) thumbnail[thumbnail.findIndex(e => e.document === params.document)].data = db.document(params.categori + '/' + params.document + '.md')
     return {
       categori: params.categori,
-      thumbnail: db.thumbnail(params.categori),
-      document: params.document ? {
-        name: params.document,
-        data: db.document(params.categori + '/' + params.document + '.md')
-      } : null
+      thumbnail
     }
   },
   components: {
     documentSection
-  },
-  methods: {
-    
   }
 }
 </script>

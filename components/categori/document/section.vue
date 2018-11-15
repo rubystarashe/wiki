@@ -1,13 +1,19 @@
 <template>
 <div>
-   <div v-html="$md.render(document.data)"></div>
+  <div>{{document}}, {{title}}, {{image}}, {{subclass}}, {{description}}</div>
+  <div v-if="data" v-html="$md.render(data)"></div>
 </div>
 </template>
 
 <script>
 export default {
   props: [
-    'document'
+    'document',
+    'title',
+    'image',
+    'subclass',
+    'description',
+    'data'
   ]
 }
 </script>

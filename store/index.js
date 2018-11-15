@@ -1,16 +1,20 @@
 export const state = () => ({
-  thumbnail: 0
+  thumbnails: {}
 })
 
+export const getters = {
+  thumbnail: state => categori => state.thumbnails[categori]
+}
+
 export const mutations = {
-  SET_THUMBNAIL (state, thumbnail) {
-    state.thumbnail = thumbnail
+  SET_THUMBNAILS (state, thumbnails) {
+    state.thumbnails = thumbnails
   }
 }
 
 export const actions = {
   nuxtServerInit ({ commit }) {
-    const { thumbnail } = require('../db')
-    commit('SET_THUMBNAIL', thumbnail)
+    const { thumbnails } = require('../db')
+    commit('SET_THUMBNAILS', thumbnails)
   }
 }

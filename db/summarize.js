@@ -28,7 +28,9 @@ module.exports = (_ => {
   fileList.forEach(f => {
     const f_info = f.split('/')
     const categori = f_info.slice(-2)[0]
-    const document = f_info.slice(-1)[0].split('.')[0]
+    const fileName = f_info.slice(-1)[0]
+    const document = fileName.split('.')[0]
+    data[categori] = data[categori] ? [ ...data[categori] ] : []
     let image
     let column = fs.readFileSync(f, 'utf8').split('\r\n').filter(line => { return line })
     column.forEach((_, i) => {
@@ -39,14 +41,13 @@ module.exports = (_ => {
       column[i] = column[i].replace(/[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi, '')
       column[i] = column[i].replace(/^ /gi, '')
     })
-    data[categori] = {
-      ...data[categori]
-    }
-    data[categori][document] = {
+    data[categori].push({
+      fileName,
+      document,
       title: column[0],
       description: column[1],
       image
-    }
+    })
   })
   return data
 })()

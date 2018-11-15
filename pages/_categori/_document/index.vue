@@ -1,6 +1,6 @@
 <template>
 <section>
-  {{categori}}
+  {{categori}} {{thumbnail}}
   <documentSection v-if="document" :document="document"/>
 </section> 
 </template>
@@ -13,12 +13,18 @@ export default {
     documentSection
   },
   computed: {
-    categori() {
+    categori () {
       return this.$route.params.categori
     },
-    document() {
+    document () {
       return this.$route.params.document
+    },
+    thumbnail () {
+      return this.$store.getters.thumbnail(this.categori)
     }
+  },
+  methods: {
+    
   }
 }
 </script>

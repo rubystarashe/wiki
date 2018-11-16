@@ -31,7 +31,7 @@ export default {
       } else return null
     },
     sectionLoad () {
-      return data && this.$route.path === this.uri
+      return this.data && this.$route.path === this.uri
     }
   }
 }

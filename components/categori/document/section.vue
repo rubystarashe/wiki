@@ -8,7 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div class="md-section" v-if="sectionLoad">
+    <div class="md-section" v-if="this.column && this.$route.path === this.uri && this.view">
       <div v-html="column"/>
     </div>
   </transition>
@@ -32,15 +32,11 @@ export default {
       view: false
     }
   },
-  computed: {
-    sectionLoad () {
-      return this.column && this.$route.path === this.uri && this.view
-    }
-  },
   methods: {
     checkColumn () {
       if (this.$route.path === this.uri) {
           this.column = require('~/static/db' + this.uri + '.md')
+          this.view = true
         } else this.view = false
     },
     push (uri) {
@@ -54,14 +50,9 @@ export default {
     '$route.path': {
       handler: function (n, p) {
         this.checkColumn()
-        if (n === this.uri) this.view = true
       },
       immediate: true
     }
-  },
-  mounted() {
-    this.view = false
-    this.view = true
   }
 }
 </script>

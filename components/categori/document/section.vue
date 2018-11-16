@@ -49,6 +49,7 @@ export default {
   watch: {
     '$route.path': {
       handler: function (n, p) {
+        console.log(this.uri, this.$route.path)
         this.checkColumn()
       },
       immediate: true

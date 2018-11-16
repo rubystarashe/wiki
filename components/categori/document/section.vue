@@ -1,8 +1,16 @@
 <template>
 <div>
-  <div @click="$router.push('/nuxt/test')">{{uri}} {{document}}, {{title}}, {{image}}, {{subclass}}, {{description}}</div>
+  <div @click="$router.push(uri)">
+    {{uri}}
+    {{document}}
+    {{title}}
+    {{image}}
+    {{subclass}}
+    {{description}}</div>
   <transition name="fade">
-    <div v-if="data" v-html="$md.render(data)"></div>
+    <no-ssr>
+      <div v-if="data" v-html="data"></div>
+    </no-ssr>
   </transition>
 </div>
 </template>
@@ -11,13 +19,24 @@
 export default {
   props: [
     'uri',
+    'categori',
     'document',
     'title',
     'image',
     'subclass',
     'description',
-    'data'
-  ]
+  ],
+  computed: {
+    data() {
+      if (this.$route.path === this.uri) {
+        const data = require('../../../db' + this.uri + '.md')
+        let column = data.split('\n')
+        column.splice(0, 4)
+        const res = column.join('\n')
+        return res
+      } else return null
+    }
+  }
 }
 </script>
 

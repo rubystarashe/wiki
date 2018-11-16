@@ -11,3 +11,10 @@ export const mutations = {
 export const getters = {
   thumbnail: state => state.thumbnail
 }
+
+export const actions = {
+  nuxtServerInit ({ commit }) {
+    const { thumbnail } = require('../db')
+    commit('SET_THUMBNAIL', thumbnail)
+  }
+}

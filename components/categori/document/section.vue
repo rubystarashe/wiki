@@ -8,7 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div v-if="data" v-html="data"></div>
+    <div class="md-section" v-if="data" v-html="data"></div>
   </transition>
 </div>
 </template>
@@ -40,5 +40,9 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.md-section>section>:nth-child(1), .md-section>section>:nth-child(2), .md-section>section>:nth-child(3) {
+  display: none;
 }
 </style>

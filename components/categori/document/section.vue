@@ -8,7 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div class="md-section" v-if="sectionLoad" v-html="data"></div>
+    <div class="md-section" v-if="sectionLoad" v-html="column"></div>
   </transition>
 </div>
 </template>
@@ -24,14 +24,30 @@ export default {
     'subclass',
     'description',
   ],
+  data() {
+    return {
+      column: null
+    }
+  },
   computed: {
+    /*
     data () {
       if (this.$route.path === this.uri) {
         return require('~/static/db' + this.uri + '.md')
       } else return null
-    },
+    },*/
     sectionLoad () {
-      return this.data && this.$route.path === this.uri
+      return this.column && this.$route.path === this.uri
+    }
+  },
+  watch: {
+    '$route.path': {
+      handler: function (n, p) {
+        if (n === this.uri) {
+          this.column = require('~/static/db' + this.uri + '.md')
+        } else this.column = null
+      },
+      immediate: true
     }
   }
 }

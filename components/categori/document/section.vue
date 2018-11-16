@@ -26,12 +26,13 @@ export default {
   ],
   data() {
     return {
-      column: null
+      column: null,
+      view: false
     }
   },
   computed: {
     sectionLoad () {
-      return this.column && this.$route.path === this.uri
+      return this.column && this.$route.path === this.uri && this.view
     }
   },
   methods: {
@@ -42,7 +43,7 @@ export default {
     },
     push (uri) {
       if (this.$route.path !== uri) {
-        this.column = null
+        this.view = false
         this.$router.push(uri)
       }
     }
@@ -58,8 +59,7 @@ export default {
     this.checkColumn()
   },
   mounted() {
-    this.checkColumn()
-    this.$nextTick(() => this.checkColumn())
+    this.view = true
   }
 }
 </script>

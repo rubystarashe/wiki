@@ -9,8 +9,8 @@
     {{description}}</div>
   <transition name="fade">
     <div v-if="column">
-      <div class="bg" @click="$router.push('/' + categori)"></div>
       <div class="md-section" v-html="column"/>
+      <button class="bg" @click="$router.push('/' + categori)">abc</button>
     </div>
   </transition>
 </div>
@@ -60,10 +60,6 @@ export default {
 
 .bg {
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 .md-section {

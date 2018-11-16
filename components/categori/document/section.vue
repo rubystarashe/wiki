@@ -8,7 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div v-if="loaded && column" v-html="column"></div>
+    <div v-if="data" v-html="data"></div>
   </transition>
 </div>
 </template>
@@ -26,24 +26,26 @@ export default {
   ],
   data() {
     return {
-      loaded: false
+      data: null
     }
   },
-  computed: {
-    column() {
+  watch: {
+    '$route.path': function () {
       if (this.$route.path === this.uri) {
         const data = require('~/static/db' + this.uri + '.md')
-        let column = data.split('\n')
-        column.splice(0, 4)
-        const res = column.join('\n')
-        return res
-      } else return null
+        let column = data.toString('utf-8').replace(/^.*.\n/, '')
+        this.data = column
+      } else this.data = null
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.loaded = true
-    })
+  created() {
+    if (this.$route.path === this.uri) {
+      const data = require('~/static/db' + this.uri + '.md')
+      this.$nextTick(() => {
+        let column = data.toString('utf-8').replace(/^.*.\n/, '')
+        this.data = column
+      })
+    }
   }
 }
 </script>

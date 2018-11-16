@@ -39,7 +39,8 @@ export default {
     checkColumn () {
       if (this.$route.path === this.uri) {
           this.column = require('~/static/db' + this.uri + '.md')
-        } else this.column = null
+          this.view = true
+        } else this.view = false
     },
     push (uri) {
       if (this.$route.path !== uri) {

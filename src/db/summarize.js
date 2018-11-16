@@ -45,8 +45,9 @@ module.exports = (_ => {
       uri: '/' + categori + '/' + document,
       fileName,
       document,
-      title: column[0],
-      description: column[1],
+      title: column[1],
+      subclass: column[2],
+      description: column[3],
       image
     })
   })

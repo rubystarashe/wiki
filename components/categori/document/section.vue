@@ -8,9 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <no-ssr>
-      <div v-if="data" v-html="data"></div>
-    </no-ssr>
+    <div v-if="loaded && column" v-html="column"></div>
   </transition>
 </div>
 </template>
@@ -26,8 +24,13 @@ export default {
     'subclass',
     'description',
   ],
+  data() {
+    return {
+      loaded: false
+    }
+  },
   computed: {
-    data() {
+    column() {
       if (this.$route.path === this.uri) {
         const data = require('~/static/db' + this.uri + '.md')
         let column = data.split('\n')
@@ -36,6 +39,11 @@ export default {
         return res
       } else return null
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.loaded = true
+    })
   }
 }
 </script>

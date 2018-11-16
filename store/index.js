@@ -14,7 +14,7 @@ export const getters = {
 
 export const actions = {
   nuxtServerInit ({ commit }) {
-    const { thumbnail } = require('../db')
+    const { thumbnail } = require('../src/db')
     commit('SET_THUMBNAIL', thumbnail)
   }
 }

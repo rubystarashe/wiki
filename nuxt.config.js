@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const { routes } = require('./db')
+const { routes } = require('./src/db')
 
 module.exports = {
   mode: 'universal',

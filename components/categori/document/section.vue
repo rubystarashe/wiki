@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div @click="$router.push(uri)">
+  <div @click="push(uri)">
     {{uri}}
     {{document}}
     {{title}}
@@ -40,15 +40,32 @@ export default {
       return this.column && this.$route.path === this.uri
     }
   },
+  methods: {
+    checkColumn () {
+      if (this.$route.path === this.uri) {
+          this.column = require('~/static/db' + this.uri + '.md')
+        } else this.column = null
+    },
+    push (uri) {
+      if (this.$route.path !== uri) {
+        this.column = null
+        this.$router.push(uri)
+      }
+    }
+  },
   watch: {
     '$route.path': {
       handler: function (n, p) {
-        if (n === this.uri) {
-          this.column = require('~/static/db' + this.uri + '.md')
-        } else this.column = null
-      },
-      immediate: true
+        this.checkColumn()
+      }
     }
+  },
+  created() {
+    this.checkColumn()
+  },
+  mounted() {
+    this.checkColumn()
+    this.$nextTick(() => this.checkColumn())
   }
 }
 </script>

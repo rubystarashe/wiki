@@ -9,7 +9,7 @@
     {{description}}</div>
   <transition name="fade">
     <div v-if="column">
-      <div class="bg" @click="toMenu"></div>
+      <div class="bg" @click="toMenu()"></div>
       <div class="md-section" v-html="column"/>
     </div>
   </transition>
@@ -39,8 +39,8 @@ export default {
         } else this.column = null
     },
     toMenu() {
-      this.column = null
       this.$router.push('/' + this.categori)
+      this.column = null
     }
   },
   watch: {

@@ -24,27 +24,11 @@ export default {
     'subclass',
     'description',
   ],
-  data() {
-    return {
-      data: null
-    }
-  },
-  watch: {
-    '$route.path': function () {
+  computed: {
+    data() {
       if (this.$route.path === this.uri) {
-        const data = require('~/static/db' + this.uri + '.md')
-        let column = data.toString('utf-8').replace(/^.*.\n/, '')
-        this.data = column
-      } else this.data = null
-    }
-  },
-  created() {
-    if (this.$route.path === this.uri) {
-      const data = require('~/static/db' + this.uri + '.md')
-      this.$nextTick(() => {
-        let column = data.toString('utf-8').replace(/^.*.\n/, '')
-        this.data = column
-      })
+        return require('~/static/db' + this.uri + '.md')
+      } else return null
     }
   }
 }

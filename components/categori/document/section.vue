@@ -8,7 +8,7 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div class="md-section" v-if="data" v-html="data"></div>
+    <div class="md-section" v-if="sectionLoad" v-html="data"></div>
   </transition>
 </div>
 </template>
@@ -25,10 +25,13 @@ export default {
     'description',
   ],
   computed: {
-    data() {
+    data () {
       if (this.$route.path === this.uri) {
         return require('~/static/db' + this.uri + '.md')
       } else return null
+    },
+    sectionLoad () {
+      return data && this.$route.path === this.uri
     }
   }
 }

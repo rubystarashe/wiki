@@ -29,7 +29,7 @@ export default {
   computed: {
     data() {
       if (this.$route.path === this.uri) {
-        const data = require('~/db' + this.uri + '.md')
+        const data = require('~/static/db' + this.uri + '.md')
         let column = data.split('\n')
         column.splice(0, 4)
         const res = column.join('\n')

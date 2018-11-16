@@ -42,5 +42,8 @@ module.exports = {
   },
   generate: {
     routes
+  },
+  router: {
+    base: '/wiki/'
   }
 }

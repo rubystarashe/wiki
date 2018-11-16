@@ -30,12 +30,6 @@ export default {
     }
   },
   computed: {
-    /*
-    data () {
-      if (this.$route.path === this.uri) {
-        return require('~/static/db' + this.uri + '.md')
-      } else return null
-    },*/
     sectionLoad () {
       return this.column && this.$route.path === this.uri
     }
@@ -57,16 +51,17 @@ export default {
     '$route.path': {
       handler: function (n, p) {
         this.checkColumn()
-      }
+      },
+      immediate: true
     }
-  },
+  },/*
   created() {
     this.checkColumn()
   },
   mounted() {
     this.checkColumn()
     this.$nextTick(() => this.checkColumn())
-  }
+  }*/
 }
 </script>
 

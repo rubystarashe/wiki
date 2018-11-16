@@ -51,17 +51,16 @@ export default {
     '$route.path': {
       handler: function (n, p) {
         this.checkColumn()
-      },
-      immediate: true
+      }
     }
-  },/*
+  },
   created() {
     this.checkColumn()
   },
   mounted() {
     this.checkColumn()
     this.$nextTick(() => this.checkColumn())
-  }*/
+  }
 }
 </script>
 

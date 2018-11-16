@@ -8,7 +8,9 @@
     {{subclass}}
     {{description}}</div>
   <transition name="fade">
-    <div class="md-section" v-if="sectionLoad">aa</div>
+    <div class="md-section" v-show="sectionLoad">
+      <div>aa</div>
+    </div>
   </transition>
 </div>
 </template>

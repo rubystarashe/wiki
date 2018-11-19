@@ -1,5 +1,5 @@
 const fs = require('fs')
-__dirname = './static/db'
+__dirname = './db'
 
 const getDirectory = path => fs.readdirSync(path).filter(file => {
   return fs.statSync(path + '/' + file).isDirectory()

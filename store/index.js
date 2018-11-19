@@ -9,7 +9,10 @@ export const mutations = {
 }
 
 export const getters = {
-  thumbnail: state => state.thumbnail
+  thumbnail: state => state.thumbnail,
+  document: state => (categori, document) => {
+    return state.thumbnail[categori].find(d => d.document === document)
+  }
 }
 
 export const actions = {

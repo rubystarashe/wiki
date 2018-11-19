@@ -1,18 +1,13 @@
 <template>
 <div>
-  <div @click="$router.push(uri)">
+  <div>
     {{uri}}
     {{document}}
     {{title}}
     {{image}}
     {{subclass}}
     {{description}}</div>
-  <transition name="fade">
-    <div v-if="column">
-      <div class="md-section" v-html="column"/>
-      <button class="bg" @click="$router.push('/' + categori)">abc</button>
-    </div>
-  </transition>
+    <div class="md-section" v-html="column"/>
 </div>
 </template>
 
@@ -27,41 +22,22 @@ export default {
     'subclass',
     'description',
   ],
-  data() {
-    return {
-      column: null
+  computed: {
+    column () {
+      return require('~/db' + this.uri + '.md')
     }
   },
   methods: {
     checkColumn () {
       if (this.$route.path === this.uri) {
-          this.column = require('~/static/db' + this.uri + '.md')
+          this.column = require('~/db' + this.uri + '.md')
         } else this.column = null
-    }
-  },
-  watch: {
-    '$route.path': {
-      handler: function (n, p) {
-        this.checkColumn()
-      },
-      immediate: true
     }
   }
 }
 </script>
 
 <style>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-
-.bg {
-  position: fixed;
-}
-
 .md-section {
   position: fixed;
 }

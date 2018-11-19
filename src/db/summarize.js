@@ -1,5 +1,5 @@
 const fs = require('fs')
-__dirname = './static/db'
+__dirname = './db'
 
 const categories = fs.readdirSync(__dirname).filter(file => {
   return fs.statSync(__dirname + '/' + file).isDirectory()
@@ -32,7 +32,7 @@ module.exports = (_ => {
     const document = fileName.split('.')[0]
     data[categori] = data[categori] ? [ ...data[categori] ] : []
     let image
-    let column = fs.readFileSync(f, 'utf8').split('\r\n').filter(line => { return line })
+    let column = fs.readFileSync(f, 'utf8').split('\n').filter(line => { return line })
     column.forEach((_, i) => {
       if (!image) {
         const imageRegex = /http[s]?:\/\/.*\.(jp[e]?g|gif|png)/.exec(column[i])

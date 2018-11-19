@@ -1,7 +1,6 @@
 <template>
 <section>
-  {{categori}}
-  <documentSection
+  <document
     v-if="data"
     :key="document"
     :categori="categori"
@@ -16,16 +15,13 @@
 </template>
 
 <script>
-import documentSection from '~/components/categori/document/section'
+import document from '~/components/categori/document'
 
 export default {
   components: {
-    documentSection
+    document
   },
   computed: {
-    thumbnail () {
-      return this.$store.getters.thumbnail[this.categori]
-    },
     categori () {
       return this.$route.params.categori
     },

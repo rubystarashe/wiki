@@ -1,12 +1,11 @@
 <template>
-<section>
-  <nuxt/>
-  
-</section> 
+<div>
+
+</div>
 </template>
 
 <script>
 export default {
-
+  
 }
 </script>

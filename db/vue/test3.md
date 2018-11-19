@@ -1,7 +1,7 @@
 ![Alt Text](https://github.com/rubystarashe/nuxt-vuex-localstorage/blob/master/localstorage.gif) 
-# Vue 문서 2
+# Vue 문서 33
 `숙련 단계`
-설명 2222222222222222
+설명 333333
 
 ## Build Setup33333
 
